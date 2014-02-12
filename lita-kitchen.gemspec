@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "lita-kitchen"
-  spec.version       = "1.0.0"
+  spec.version       = "1.0.1"
   spec.authors       = ["Marcel de Graaf"]
   spec.email         = ["mail@marceldegraaf.net"]
   spec.description   = %q{Forward notifications from Kitchen to Lita}
