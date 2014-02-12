@@ -7,7 +7,7 @@ module Lita
       http.post "/lita/kitchen/notify", :notify
 
       def notify(request, response)
-        source = Source.new(user: Lita.config.robot.name, room: "Ops")
+        source = Source.new(user: Lita.config.robot.name, room: "#ops")
         query = request.POST
 
         user        = query["user"]
