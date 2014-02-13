@@ -57,7 +57,7 @@ module Lita
         else
           commit      = hash["after"]
           compare     = hash["compare"]
-          branch      = hash["ref_name"]
+          branch      = hash["ref"].split("/").last
           repository  = hash["repository"]["name"]
           num_commits = hash["commits"].size
 
