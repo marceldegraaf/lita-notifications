@@ -46,26 +46,34 @@ module Lita
       def github(request, response)
         error(response, 401) and return unless authenticated?(request)
         error(response, 404) and return unless enabled?(:github)
+        error(response, 500) and return unless request.env["HTTP_X_GITHUB_EVENT"]
 
+        type = request.env["HTTP_X_GITHUB_EVENT"]
         hash = JSON.load(request.body.read)
 
-        commit      = hash["after"]
-        compare     = hash["compare"]
-        branch      = hash["ref_name"]
-        repository  = hash["repository"]["name"]
-        num_commits = hash["commits"].size
+        if type == "ping"
+          reply "Received a ping request from Github's webhook!"
 
-        if num_commits > 1
-          author  = hash["head_commit"]["committer"]["name"]
-          label   = "[#{repository}]"
-          message = "pushed #{num_commits} to #{branch}"
         else
-          author  = hash["commits"].first["author"]["name"]
-          label   = "[#{repository}/#{branch}]"
-          message = hash["commits"].first["message"]
-        end
+          commit      = hash["after"]
+          compare     = hash["compare"]
+          branch      = hash["ref_name"]
+          repository  = hash["repository"]["name"]
+          num_commits = hash["commits"].size
 
-        reply "#{label} #{message} – #{compare} (#{author})"
+          if num_commits > 1
+            author  = hash["head_commit"]["committer"]["name"]
+            label   = "[#{repository}]"
+            message = "pushed #{num_commits} to #{branch}"
+          else
+            author  = hash["commits"].first["author"]["name"]
+            label   = "[#{repository}/#{branch}]"
+            message = hash["commits"].first["message"]
+          end
+
+          reply "#{label} #{message} – #{compare} (#{author})"
+
+        end
       end
 
       private
