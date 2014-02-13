@@ -1,11 +1,11 @@
 Gem::Specification.new do |spec|
-  spec.name          = "lita-third-party-notifications"
+  spec.name          = "lita-notifications"
   spec.version       = "1.0.1"
   spec.authors       = ["Marcel de Graaf"]
   spec.email         = ["mail@marceldegraaf.net"]
   spec.description   = %q{Forward notifications from various third parties to Lita}
   spec.summary       = %q{Forward notifications to Lita}
-  spec.homepage      = "https://github.com/marceldegraaf/lita-third-party-notifications"
+  spec.homepage      = "https://github.com/marceldegraaf/lita-notifications"
   spec.license       = "MIT"
   spec.metadata      = { "lita_plugin_type" => "handler" }
 

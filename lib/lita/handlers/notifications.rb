@@ -1,8 +1,9 @@
 require "lita"
+require "json"
 
 module Lita
   module Handlers
-    class ThirdPartyNotifications < Handler
+    class Notifications < Handler
 
       #
       # Always specify the token in the query parameters of the request
@@ -10,6 +11,7 @@ module Lita
       #
 
       http.post "/notifications/kitchen", :kitchen
+      http.post "/notifications/github", :github
 
       def self.default_config(config)
         config.channel = "#general"
@@ -35,6 +37,19 @@ module Lita
         reply "[#{application}] #{message} (by #{user})"
       end
 
+      #
+      # Notifications from Github
+      #
+      # Query params:
+      #   payload = JSON-formatted string with Github payload
+      #
+      def github(request, response)
+        error(response, 401) and return unless authenticated?(request)
+        error(response, 404) and return unless enabled?(:github)
+
+
+      end
+
       private
 
       def reply(message)
@@ -54,7 +69,7 @@ module Lita
       end
 
       def config
-        Lita.config.handlers.third_party_notifications
+        Lita.config.handlers.notifications
       end
 
       def authenticated?(request)
@@ -71,6 +86,6 @@ module Lita
 
     end
 
-    Lita.register_handler(ThirdPartyNotifications)
+    Lita.register_handler(Notifications)
   end
 end

@@ -1,13 +1,13 @@
-# lita-third-party-notifications
+# lita-notifications
 
 A collection of webhooks compatible with various third party applications and services, to send their notifications to Lita.
 
 ## Installation
 
-Add lita-third-party-notifications to your Lita instance's Gemfile:
+Add lita-notifications to your Lita instance's Gemfile:
 
 ``` ruby
-gem "lita-third-party-notifications"
+gem "lita-notifications"
 ```
 
 ## Configuration

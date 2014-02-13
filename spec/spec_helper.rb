@@ -1,2 +1,2 @@
-require "lita-third-party-notifications"
+require "lita-notifications"
 require "lita/rspec"
