@@ -1,2 +1,2 @@
-require "lita-kitchen"
+require "lita-third-party-notifications"
 require "lita/rspec"

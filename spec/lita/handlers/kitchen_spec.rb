@@ -1,4 +1,4 @@
 require "spec_helper"
 
-describe Lita::Handlers::Kitchen, lita_handler: true do
+describe Lita::Handlers::ThirdPartyNotifications, lita_handler: true do
 end

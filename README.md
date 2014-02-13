@@ -1,13 +1,13 @@
-# lita-kitchen
+# lita-third-party-notifications
 
-TODO: Add a description of the plugin.
+A collection of webhooks compatible with various third party applications and services, to send their notifications to Lita.
 
 ## Installation
 
-Add lita-kitchen to your Lita instance's Gemfile:
+Add lita-third-party-notifications to your Lita instance's Gemfile:
 
 ``` ruby
-gem "lita-kitchen"
+gem "lita-third-party-notifications"
 ```
 
 ## Configuration
