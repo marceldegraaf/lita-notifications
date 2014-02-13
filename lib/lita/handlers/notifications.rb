@@ -47,7 +47,25 @@ module Lita
         error(response, 401) and return unless authenticated?(request)
         error(response, 404) and return unless enabled?(:github)
 
+        hash = JSON.load(request.body.read)
 
+        commit      = hash["after"]
+        compare     = hash["compare"]
+        branch      = hash["ref_name"]
+        repository  = hash["repository"]["name"]
+        num_commits = hash["commits"].size
+
+        if num_commits > 1
+          author  = hash["head_commit"]["committer"]["name"]
+          label   = "[#{repository}]"
+          message = "pushed #{num_commits} to #{branch}"
+        else
+          author  = hash["commits"].first["author"]["name"]
+          label   = "[#{repository}/#{branch}]"
+          message = hash["commits"].first["message"]
+        end
+
+        reply "#{label} #{message} – #{compare} (#{author})"
       end
 
       private
