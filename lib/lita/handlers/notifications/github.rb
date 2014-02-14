@@ -47,7 +47,7 @@ module Lita
         end
 
         def icon_url
-          "https://dl.dropboxusercontent.com/u/3257729/lita-notifications/github.png"
+          "https://dl.dropboxusercontent.com/u/3257729/lita-notifications/github.jpg"
         end
 
         def bot_name
