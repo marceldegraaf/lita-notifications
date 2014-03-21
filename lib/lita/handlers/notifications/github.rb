@@ -16,6 +16,14 @@ module Lita
           if type == "ping"
             reply "Received a ping request from Github's webhook!"
 
+          elsif hash["delete"] == true
+            branch      = hash["ref"].split("/").last
+            repository  = hash["repository"]["name"]
+            label       = "[#{repository}]"
+            message     = "branch '#{branch}' was deleted"
+
+            reply "#{label} #{message}"
+
           else
             commit      = hash["after"]
             compare     = hash["compare"]

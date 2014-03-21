@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "lita-notifications"
-  spec.version       = "1.0.1"
+  spec.version       = "1.0.2"
   spec.authors       = ["Marcel de Graaf"]
   spec.email         = ["mail@marceldegraaf.net"]
   spec.description   = %q{Forward notifications from various third parties to Lita}
